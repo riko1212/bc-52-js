@@ -6,7 +6,9 @@
 //* Якщо операнд був преведенний до false, то повертається значення цього операнду.
 //* Якщо всі операнди були приведені до true, то повертається значення останнього операнду.
 
-// const result = 20 && 30 && 0 && 'Hello';
+// const result = 0 || '' || 0 || false;
+
+// console.log(result);
 
 //* || - запинається на правді
 //* Якщо операнд був преведенний до true, то повертається значення цього операнду.
@@ -27,15 +29,15 @@
 // console.log(null || (2 && 3) || 4);
 
 //? Приведення типів
-// console.log(2 + 5 + '' + 1 + 0);
-// console.log('' + 1 - 0);
-// console.log(true + false);
-// console.log(6 / '3');
-// console.log('2' * '3');
-// console.log(4 + 5 + 'px');
-// console.log('$' + 4 + 5);
-// console.log('4' - 2);
-// console.log('4px' - 2);
-// console.log(7 / 0);
-// console.log('  -9  ' + 5);
-// console.log(null + 1);
+console.log(2 + 5 + '' + 1 + 0);
+console.log('' + 1 - 0);
+console.log(true + false);
+console.log(6 / '3');
+console.log('2' * '3');
+console.log(4 + 5 + 'px');
+console.log('$' + 4 + 5);
+console.log('4' - 2);
+console.log('4px' - 2);
+console.log(7 / 0);
+console.log('  -9  ' + 5);
+console.log(null + 1);

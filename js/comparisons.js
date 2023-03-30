@@ -11,6 +11,8 @@
  * undefined не дорівнює нічому окрім себе та null.
  */
 
+// console.log('' == 0);
+
 /*
  * Приведення різних типів до числа:
  * true --> 1
@@ -21,8 +23,8 @@
  */
 
 //* Оператор менше (<)
-// console.log(2 < 12);
-// console.log(12 < 2);
+// console.log(2 < 12); true
+// console.log(12 < 2); false
 // console.log('a' < 'b');
 // console.log('b' < 'a');
 // console.log('A' < 'a');
@@ -51,10 +53,10 @@
 // console.log(4 == 5);
 
 //* Строга рівність (===)
-// console.log('123' === 123);
-// console.log(null === null);
-// console.log(2 + 2 === 4);
-// console.log(0 === -0);
+console.log('123' === 123);
+console.log(null === null);
+console.log(2 + 2 === 4);
+console.log(0 === -0);
 
 //* Нерівність (!=)
 // console.log('4' != 4);
