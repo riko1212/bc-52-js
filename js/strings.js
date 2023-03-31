@@ -83,5 +83,5 @@
 */
 // const userName = 'Vasyl Ivanenko is 24 years old';
 
-// const name = userName.slice(0, userName.indexOf('is') - 1);
+// const name = userName.slice();
 // console.log(name);
