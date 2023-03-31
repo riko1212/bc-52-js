@@ -178,7 +178,7 @@
  ? *******
  */
 
-for (let i = 0, star = ''; i < 7; i += 1) {
-  star += '*';
-  console.log(star);
-}
+// for (let i = 0, star = ''; i < 7; i += 1) {
+//   star += '*';
+//   console.log(star);
+// }
