@@ -9,8 +9,19 @@
 //   name: 'Mango',
 //   age: 20,
 //   hobby: 'html',
-//   premium: false,
+//   premium: true,
 // };
+
+// user.mood = 'happy';
+// user.hobby = 'skydiving';
+// user.premium = false;
+// user.premium = !user.premium;
+
+// for (const item of Object.keys(user)) {
+//   console.log(`${item} : ${user[item]}`);
+// }
+
+// console.log(user);
 
 /*
 ? У нас є об'єкт, де зберігаються зарплати нашої команди.
@@ -23,6 +34,14 @@
 //   Pete: 130,
 // };
 
+// let total = 0;
+
+// for (const item of Object.values(salaries)) {
+//   total += item;
+// }
+
+// console.log(total);
+
 /*
 ? Напишіть ф-цію calcTotalPrice(stones, stoneName), яка приймає масив об'єктів та рядок з назвою каменю.
 ? Ф-ція рахує і повертає загальну вартість каміння з таким ім'ям.
@@ -33,6 +52,15 @@ const stones = [
   { name: 'Сапфір', price: 400, quantity: 7 },
   { name: 'Щебінь', price: 200, quantity: 2 },
 ];
+
+function calcTotalPrice(stones, stoneName) {
+  for (const stone of stones) {
+    if (stone.name.toLowerCase() === stoneName.toLowerCase()) {
+      return stone.price * stone.quantity;
+    }
+  }
+  return 'Каменя за такою назвою не знайдено';
+}
 
 console.log(calcTotalPrice(stones, 'Смарагд')); // 5200
 console.log(calcTotalPrice(stones, 'Діамант')); // 8100

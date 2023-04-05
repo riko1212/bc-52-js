@@ -73,16 +73,66 @@ const filmoteka = [
 
 //? Напишіть функцію getAllTitlesOfFilms(films), яка повертає масив із усіма назвами фільмів.
 
+// const getAllTitlesOfFilms = function (films) {
+//   const titlesArr = [];
+
+//   for (const item of films) {
+//     titlesArr.push(item.title);
+//   }
+//   return titlesArr;
+// };
+
 // console.log(getAllTitlesOfFilms(filmoteka));
 
 //? Напишіть функцію findFilmByName(films, filmTitle), яка шукає фільм за назвою.
 
-// console.log(findFilmByName(filmoteka, 'Venom'));
+// const findFilmByName = function (films, filmTitle) {
+//   let findedFilm = null;
+//   for (const item of films) {
+//     if (item.title.toLowerCase() === filmTitle.toLowerCase()) {
+//       findedFilm = item;
+//       break
+//     }
+//   }
+//   return findedFilm;
+// };
+
+// const findFilmByName = function (films, filmTitle) {
+//   for (const item of films) {
+//     if (item.title.toLowerCase() === filmTitle.toLowerCase()) {
+//       return item;
+//     }
+//   }
+//   return 'film not found';
+// };
+
+// console.log(findFilmByName(filmoteka, 'ewwe'));
 
 //? Напишіть функцію getAdultFilms(films), яка повертає масив усіх дорослих фільмів.
+
+const getAdultFilms = function (films) {
+  const adultFilms = [];
+  for (const item of films) {
+    if (item.adult) {
+      adultFilms.push(item);
+    }
+  }
+  return adultFilms;
+};
 
 // console.log(getAdultFilms(filmoteka));
 
 //? Напишіть функцію getNotAdultFilms(films), яка повертає масив усіх фільмів без обмеження.
+const getNotAdultFilms = function (films) {
+  const notAdultFilms = [];
+  for (const item of films) {
+    if (!item.adult) {
+      notAdultFilms.push(item);
+    }
+  }
+  return notAdultFilms;
+};
 
-// console.log(getNotAdultFilms(filmoteka));
+// console.log(getAdultFilms(filmoteka));
+
+console.log(getNotAdultFilms(filmoteka));
