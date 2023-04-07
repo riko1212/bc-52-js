@@ -2,12 +2,18 @@
  * Колбек-функції, функції вищого порядку
  */
 
-// const prettyGreet = function (username) {
-//   console.log(`Hello ${username} 👋`);
+// const greet = function (firstName, callback) {
+//   // let firstName = 'Andrii';
+//   // let callback = simpleGreet;
+//   callback(firstName);
 // };
 
 // const simpleGreet = function (firstName) {
 //   console.log(`Hello ${firstName}`);
+// };
+
+// const prettyGreet = function (username) {
+//   console.log(`Hello ${username} 👋`);
 // };
 
 // greet('Andrii', simpleGreet);
@@ -29,12 +35,16 @@
 //   console.log(user.avatar_url);
 // };
 
+// const showLogin = function (user) {
+//   console.log(user.login);
+// };
+
 // fetchUser('riko1212', showInfoAboutUser);
 // fetchUser('riko1212', showAvatar);
+// fetchUser('riko1212', showLogin);
 
 //? Реєстрація подій на сторінці
 // const userEmailEl = document.querySelector('.js-contact-form-email');
-
 // const logValues = function (event) {
 //   console.log('Hi');
 // };
@@ -43,8 +53,16 @@
 
 /*
 ? Напишіть функцію each(array, callback), яка першим параметром очікує масив, а другим - функцію, яка застосовується до кожного елемента масиву.
-? Функція each повинна повернути новий масив, елементами якого будуть результати виклику колббека.
+? Функція each повинна повернути новий масив, елементами якого будуть результати виклику колбека.
 */
+
+// const each = function (array, callback) {
+//   const neArr = [];
+//   for (const item of array) {
+//     neArr.push(callback(item));
+//   }
+//   return neArr;
+// };
 
 // const numbers = [1, 2, 3, 4, 5];
 
@@ -56,6 +74,8 @@
 //   return el + 2;
 // };
 
+// console.log(numbers);
+
 // console.log(each(numbers, multi));
 // console.log(each(numbers, doubleAdd));
 
@@ -66,6 +86,23 @@
 ? logProduct(product) - коллбек, що приймає об'єкт продукту і логує його в консоль
 ? logTotalPrice(product) - коллбек, що приймає об'єкт продукту і логує загальну вартість товару в консоль
 */
+
+// const createProduct = function (product, callback) {
+//   const newProduct = {
+//     id: Date.now(),
+//     ...product,
+//   };
+//   callback(newProduct);
+// };
+
+// function logProduct(product) {
+//   console.log(product);
+// }
+
+// function logTotalPrice(product) {
+//   const { price, quantity } = product;
+//   console.log(price * quantity);
+// }
 
 // createProduct({ name: '🍎', price: 30, quantity: 3 }, logProduct);
 // createProduct({ name: '🍎', price: 30, quantity: 3 }, logTotalPrice);
@@ -86,24 +123,46 @@
 ? onError(`Amount must be more than 0 credits`) якщо amount менше або дорівнює нулю
 ? інакше додаємо до балансу amount і викликаємо onSuccess(`Account balance: ${this.balance}`)
 */
-// const TRANSACTION_LIMIT = 1000;
+const TRANSACTION_LIMIT = 1000;
 
-// const account = {
-//   username: 'Jacob',
-//   balance: 400,
+const account = {
+  username: 'Jacob',
+  balance: 400,
 
-// function handleSuccess(message) {
-//   console.log(`✅ Success! Account balance ${message}`);
-// }
+  withdraw(amount, onSuccess, onError) {
+    if (amount > TRANSACTION_LIMIT) {
+      onError(`Amount should not exceed ${TRANSACTION_LIMIT} credits`);
+    } else if (amount > this.balance) {
+      onError(`Amount can't exceed account balance of ${this.balance} credits`);
+    } else {
+      this.balance -= amount;
+      onSuccess(`Account balance: ${this.balance}`);
+    }
+  },
+  deposit(amount, onSuccess, onError) {
+    if (amount > TRANSACTION_LIMIT) {
+      onError(`Amount should not exceed ${TRANSACTION_LIMIT} credits`);
+    } else if (amount <= 0) {
+      onError(`Amount must be more than 0 credits`);
+    } else {
+      this.balance += amount;
+      onSuccess(`Account balance: ${this.balance}`);
+    }
+  },
+};
 
-// function handleError(message) {
-//   console.log(`❌ Error! ${message}`);
-// }
+function handleSuccess(message) {
+  console.log(`✅ Success! ${message}`);
+}
 
-// account.withdraw(2000, handleSuccess, handleError);
-// account.withdraw(600, handleSuccess, handleError);
-// account.withdraw(300, handleSuccess, handleError);
-// account.deposit(1700, handleSuccess, handleError);
-// account.deposit(0, handleSuccess, handleError);
-// account.deposit(-600, handleSuccess, handleError);
-// account.deposit(600, handleSuccess, handleError);
+function handleError(message) {
+  console.log(`❌ Error! ${message}`);
+}
+
+account.withdraw(2000, handleSuccess, handleError);
+account.withdraw(600, handleSuccess, handleError);
+account.withdraw(300, handleSuccess, handleError);
+account.deposit(1700, handleSuccess, handleError);
+account.deposit(0, handleSuccess, handleError);
+account.deposit(-600, handleSuccess, handleError);
+account.deposit(600, handleSuccess, handleError);
