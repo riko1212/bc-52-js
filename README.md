@@ -1,3 +1,4 @@
-- Чисті функції
-- Методи: map, filter, find, findIndex, every і some, reduce, sort
-- Ланцюжки методів
+- Контекст виконання функції
+- Правила визначення this
+- this у стрілочних функціях
+- Методи call, apply та bind
