@@ -2,6 +2,27 @@
  *  Контекст виконання this
  */
 
+// const user = {
+//   userName: 'Andrii',
+//   userAge: 40,
+
+//   getUserName() {
+//     return this.userName;
+//   },
+
+//   getUserAge() {
+//     return this.userAge;
+//   },
+
+//   getUserThis() {
+//     return this;
+//   },
+// };
+
+// console.log(user.getUserName());
+// console.log(user.getUserAge());
+// console.log(user.getUserThis());
+
 /*
  * this існує тільки всередині функцій.
  * На this не впливає те де функція була //! ОГОЛОШЕНА.
@@ -21,6 +42,9 @@
 //     console.log(this.name);
 //   },
 // };
+
+// user.showThis();
+// user.showName();
 
 //TODO: Розглянемо як this поводиться у звичайних функціях (суворий, не суворий режим)
 //? Function expression
@@ -61,6 +85,12 @@
 //   age: 30,
 // };
 
+// user.showUserThis = showThis;
+// user.showUserName = showName;
+
+// user.showUserThis();
+// user.showUserName();
+
 //TODO: Виклик методу об'єкта без контексту
 // const user = {
 //   name: 'Luis',
@@ -74,6 +104,15 @@
 //     console.log(this.name);
 //   },
 // };
+
+// const showThis = user.showUserThis;
+// const showName = user.showUserName;
+
+// // console.log(showThis);
+// // console.log(showName);
+
+// showThis();
+// showName();
 
 //TODO: This в callback функціях
 // const user = {
@@ -90,9 +129,13 @@
 // };
 
 // const someFunction = function (callback) {
-
+// let callback = user.showUserThis;
 //   callback();
 // };
+
+// // const logHello = () => {
+// //   console.log('Hello');
+// // };
 
 // someFunction(user.showUserThis);
 
@@ -101,15 +144,13 @@
 //   name: 'Luis',
 //   age: 30,
 
-//     const changeAge = newAge => {
-//       console.log(`this ---->`, this);
-//       this.age = newAge;
-//     };
-
+//   changeAge: (newAge) => {
+//     console.log(`this ---->`, this);
+//     this.age = newAge;
 //   },
 // };
 
-// user.changeUserAge(40);
+// user.changeAge(40);
 
 /*
 ? Яким буде результат виконання цього коду?
@@ -147,11 +188,9 @@
 ? Яким буде результат console.log
 */
 // function makeUser() {
-
 //   return {
 //     name: 'Джон',
 //     ref() {
-
 //       return this;
 //     },
 //   };
@@ -165,24 +204,24 @@
 /*
 ? Це ladder (сходи) – об'єкт, який дозволяє підніматися вгору та спускатися:
 */
-// const ladder = {
-//   step: 0,
+const ladder = {
+  step: 0,
 
-//   up() {
-//     this.step += 1;
-//     return this;
-//   },
+  up() {
+    this.step += 1;
+    return this;
+  },
 
-//   down() {
-//     this.step -= 1;
-//     return this;
-//   },
+  down() {
+    this.step -= 1;
+    return this;
+  },
 
-//   showStep() {
-//     console.log(this.step);
-//     return this;
-//   },
-// };
+  showStep() {
+    console.log(this.step);
+    return this;
+  },
+};
 
 // Тепер, якщо нам потрібно зробити кілька послідовних викликів, ми можемо зробити це так:
 
@@ -192,4 +231,4 @@
 // ladder.showStep();
 
 // Змініть код методів up, down та showStep таким чином, щоб їх виклик можна було зробити по ланцюжку, наприклад:
-// ladder.up().up().down().showStep();
+ladder.up().up().down().showStep();
