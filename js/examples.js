@@ -9,12 +9,38 @@
 ? Додай метод updatePostCount(value), який у параметрі value приймає кількість постів, які потрібно додати користувачеві.
 */
 
+// class Blogger {
+//   constructor(blogerData) {
+//     const { email, age, numberOfPosts, topics } = blogerData;
+//     this.email = email;
+//     this.age = age;
+//     this.numberOfPosts = numberOfPosts;
+//     this.topics = topics;
+//   }
+//   getInfo() {
+//     return `Blogger ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
+//   }
+
+//   updatePostCount(value) {
+//     if (value > 0) {
+//       this.numberOfPosts += value;
+//     }
+//   }
+// }
+
 // const mango = new Blogger({
 //   email: 'mango@mail.com',
 //   age: 24,
 //   numberOfPosts: 20,
 //   topics: ['tech', 'cooking'],
 // });
+
+// console.log(mango.getInfo());
+// console.log(mango);
+
+// mango.updatePostCount(1);
+
+// console.log(mango);
 
 // console.log(mango.getInfo()); // Blogger mango@mail.com is 24 years old and has 20 posts
 // mango.updatePostCount(5);
@@ -40,15 +66,37 @@
 ? removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних.
 */
 
-// const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
+class Storage {
+  constructor(items) {
+    this.items = items;
+  }
+  getItems() {
+    return this.items;
+  }
 
-// console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑' ]
+  addItem(item) {
+    this.items.push(item);
+  }
 
-// storage.addItem('🍌');
-// console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+  removeItem(item) {
+    if (this.items.includes(item)) {
+      const indexOfItem = this.items.indexOf(item);
+      this.items.splice(indexOfItem, 1);
+    }
+  }
+}
 
-// storage.removeItem('🍋');
-// console.log(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
+const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
+
+console.log(storage);
+
+console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑' ]
+
+storage.addItem('🍌');
+console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+
+storage.removeItem('🍋');
+console.log(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
 /*
 ? Напиши клас User який створює об'єкт із властивостями login та email.
 ? Оголоси приватні властивості #login та #email, доступ до яких зроби через геттер та сеттер login та email.
@@ -112,18 +160,18 @@
 ? За замовчуванням значення властивості on має бути false.
 */
 
-const firstToggle = new Toggle({ isOpen: true });
+// const firstToggle = new Toggle({ isOpen: true });
 
-console.group('firstToggle');
-console.log(firstToggle.on);
-firstToggle.toggle();
-console.log(firstToggle.on);
-console.groupEnd('firstToggle');
+// console.group('firstToggle');
+// console.log(firstToggle.on);
+// firstToggle.toggle();
+// console.log(firstToggle.on);
+// console.groupEnd('firstToggle');
 
-const secondToggle = new Toggle();
+// const secondToggle = new Toggle();
 
-console.group('secondToggle');
-console.log(secondToggle.on);
-secondToggle.toggle();
-console.log(secondToggle.on);
-console.groupEnd('secondToggle');
+// console.group('secondToggle');
+// console.log(secondToggle.on);
+// secondToggle.toggle();
+// console.log(secondToggle.on);
+// console.groupEnd('secondToggle');
