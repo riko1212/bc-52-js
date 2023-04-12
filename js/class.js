@@ -28,7 +28,9 @@ class User {
   }
 
   changeFirstName(newName) {
-    this.firstName = newName;
+    if (this.#private(newName)) {
+      this.firstName = newName;
+    }
   }
 
   get login() {
@@ -37,6 +39,10 @@ class User {
 
   set login(newLogin) {
     this.#userLogin = newLogin;
+  }
+
+  #private(name) {
+    return typeof name === 'string';
   }
 }
 
@@ -69,7 +75,9 @@ const user3 = new User({
 });
 
 user1.firstName = 'Mykola';
-user1.login = 'test@.edu';
+
+user1.changeFirstName(123);
+console.log(user1.login);
 
 // user1.setLogin('test@.edu');
 // console.log(user1.getLogin());
