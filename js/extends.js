@@ -43,7 +43,7 @@ class Developer {
     return `${User.trimStr(this.firstName)} ${User.trimStr(this.lastName)}`;
   }
 
-  #trimStr(str) {
+  static trimStr(str) {
     return str.trim();
   }
 
@@ -87,7 +87,7 @@ class Manager {
     return `${User.trimStr(this.firstName)} ${User.trimStr(this.lastName)}`;
   }
 
-  #trimStr(str) {
+  static trimStr(str) {
     return str.trim();
   }
   doManaerWork() {
@@ -95,24 +95,24 @@ class Manager {
   }
 }
 
-const user = new Developer({
-  countOfProjects: 10,
-  firstName: 'Nicholas',
-  lastName: 'West',
-  age: 30,
-  login: 'vcvd',
-  email: 'iseegi@sak.sx',
-});
+// const someDeveloper = new Developer({
+//   countOfProjects: 10,
+//   firstName: 'Nicholas',
+//   lastName: 'West',
+//   age: 30,
+//   login: 'vcvd',
+//   email: 'iseegi@sak.sx',
+// });
 
-console.log(user);
+// console.log(user);
 
-const someManager = new Manager({
-  managerProp: 343,
-  firstName: 'Caleb',
-  lastName: 'Murray',
-  age: 20,
-  login: 'bgff',
-  email: 'uwigicnaf@ra.be',
-});
+// const someManager = new Manager({
+//   managerProp: 343,
+//   firstName: 'Caleb',
+//   lastName: 'Murray',
+//   age: 20,
+//   login: 'bgff',
+//   email: 'uwigicnaf@ra.be',
+// });
 
-console.log(someManager);
+// console.log(someManager);
