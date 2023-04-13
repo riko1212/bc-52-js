@@ -1,9 +1,14 @@
 /*
  * Примітивні типи даних: number, string, boolean, null та undefined, BigInt, Symbol.
  */
+
 /*
  * Виведення даних: console.log та alert. Вкладка Console в Chrome Devtools.
  */
+
+// const a = 5;
+
+// console.log(5 ** 5);
 
 /*
  * Змінні: оголошення з let та const.
@@ -11,15 +16,24 @@
 
 /*
  * Отримання даних: prompt та confirm.
+
  */
 
 /*
  * Математичні оператори (+, -, *, /, %, **)
  */
 
+// console.log(10 % 2);
+
 /*
  * Number, Number.parseInt(), Number.parseFloat()
  */
+
+// const width = Number.parseFloat(prompt('width'));
+
+// const newAge = width + 2;
+
+// console.log(newAge);
 
 /*
  * Math.floor, Math.ceil, Math.round, Math.max, Math.min, Math.pow(), Math.random().
@@ -30,17 +44,23 @@
  * Конкатенація рядків, шаблонні рядки
  */
 
+const str = 'Andrii';
+
+console.log(`Hello, ${str}`);
+
 /*
  * Властивості і методи рядків
-str.length
-str.toLowerCase()
-str.includes()
-str.indexOf()
-str.replace()
-str.replaceAll()
-str.slice()
+
 
  */
+
+console.log(str.slice(2, 4));
+// str.toLowerCase();
+// str.includes();
+// str.indexOf();
+// str.replace();
+// str.replaceAll();
+// str.slice();
 
 /*
  * Логічні оператори (&& || !)
@@ -57,30 +77,30 @@ str.slice()
 //* ! - інвертує правду до брехні, а брехню до правди
 
 //? Логічні оператори
-// console.log(true && 3);
-// console.log(false && 3);
-// console.log(true && 4 && 'kiwi');
-// console.log(true && 0 && 'kiwi');
-// console.log(true || 3);
-// console.log(true || 3 || 4);
-// console.log(true || false || 7);
-// console.log(null || 2 || undefined);
-// console.log((1 && null && 2) > 0);
-// console.log(null || (2 && 3) || 4);
+console.log(true && 3);
+console.log(false && 3);
+console.log(true && 4 && 'kiwi');
+console.log(true && 0 && 'kiwi');
+console.log(true || 3);
+console.log(true || 3 || 4);
+console.log(true || false || 7);
+console.log(null || 2 || undefined);
+console.log((1 && null && 2) > 0);
+console.log(null || (2 && 3) || 4);
 
 //? Приведення типів
-// console.log(2 + 5 + '' + 1 + 0);
-// console.log('' + 1 - 0);
-// console.log(true + false);
-// console.log(6 / '3');
-// console.log('2' * '3');
-// console.log(4 + 5 + 'px');
-// console.log('$' + 4 + 5);
-// console.log('4' - 2);
-// console.log('4px' - 2);
-// console.log(7 / 0);
-// console.log('  -9  ' + 5);
-// console.log(null + 1);
+console.log(2 + 5 + '' + 1 + 0);
+console.log('' + 1 - 0);
+console.log(true + false);
+console.log(6 / '3');
+console.log('2' * '3');
+console.log(4 + 5 + 'px');
+console.log('$' + 4 + 5);
+console.log('4' - 2);
+console.log('4px' - 2);
+console.log(7 / 0);
+console.log('  -9  ' + 5);
+console.log(null + 1);
 
 /*
  * Результатом порівняння буде бульове значення.
