@@ -7,6 +7,8 @@
 
 class User {
   #userLogin;
+
+  static Test = 5;
   constructor(userInfo) {
     const {
       firstName,
@@ -28,7 +30,7 @@ class User {
   }
 
   changeFirstName(newName) {
-    if (this.#private(newName)) {
+    if (User.private(newName)) {
       this.firstName = newName;
     }
   }
@@ -41,7 +43,7 @@ class User {
     this.#userLogin = newLogin;
   }
 
-  #private(name) {
+  static private(name) {
     return typeof name === 'string';
   }
 }
@@ -54,6 +56,9 @@ const user1 = new User({
   login: 'id@si.pg',
   password: '123456',
 });
+
+user1.changeFirstName('Petro');
+console.log(user1);
 
 const user2 = new User({
   firstName: 'Michael',
@@ -74,14 +79,9 @@ const user3 = new User({
   nikName: 'riko',
 });
 
-user1.firstName = 'Mykola';
-
-user1.changeFirstName(123);
-console.log(user1.login);
-
 // user1.setLogin('test@.edu');
 // console.log(user1.getLogin());
 
-console.log(user1);
-console.log(user2);
-console.log(user3);
+const obj = Object.create(user3);
+
+console.dir(obj);

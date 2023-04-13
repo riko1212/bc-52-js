@@ -1,28 +1,17 @@
 /*
  * Наслідування з extends та super
  */
-class Developer {
+
+class User {
   #login;
   #email;
-
-  constructor({
-    countOfProjects,
-    firstName,
-    lastName,
-    age,
-    login,
-    email,
-  } = {}) {
-    // this = {}
-    this.countOfProjects = countOfProjects;
+  constructor({ firstName, lastName, age, login, email }) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.userAge = age;
     this.#login = login;
     this.#email = email;
-    // return this;
   }
-
   get login() {
     return this.#login;
   }
@@ -46,63 +35,47 @@ class Developer {
   static trimStr(str) {
     return str.trim();
   }
+}
 
+class Developer extends User {
+  constructor(devInfo) {
+    const { countOfProjects, ...otherProps } = devInfo;
+    super(otherProps);
+    // this = {}
+    this.countOfProjects = countOfProjects;
+
+    // return this;
+  }
   doDeveloperWork() {
     console.log('Роблю роботу');
   }
 }
 
 class Manager {
-  #login;
-  #email;
-
-  constructor({ managerProp, firstName, lastName, age, login, email } = {}) {
+  constructor() {
+    const { managerProp, ...otherProps } = devInfo;
     // this = {}
     this.managerProp = managerProp;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.userAge = age;
-    this.#login = login;
-    this.#email = email;
+
     // return this;
-  }
-
-  get login() {
-    return this.#login;
-  }
-
-  set login(newLogin) {
-    this.#login = newLogin;
-  }
-
-  get email() {
-    return this.#email;
-  }
-
-  set email(newEmail) {
-    this.#email = newEmail;
-  }
-
-  getFullName() {
-    return `${User.trimStr(this.firstName)} ${User.trimStr(this.lastName)}`;
-  }
-
-  static trimStr(str) {
-    return str.trim();
   }
   doManaerWork() {
     console.log('Роблю роботу');
   }
 }
 
-// const someDeveloper = new Developer({
-//   countOfProjects: 10,
-//   firstName: 'Nicholas',
-//   lastName: 'West',
-//   age: 30,
-//   login: 'vcvd',
-//   email: 'iseegi@sak.sx',
-// });
+// const dev = new Developer();
+
+const someDeveloper = new Developer({
+  countOfProjects: 10,
+  firstName: 'Nicholas',
+  lastName: 'West',
+  age: 30,
+  login: 'vcvd',
+  email: 'iseegi@sak.sx',
+});
+
+console.log(someDeveloper.getFullName());
 
 // console.log(user);
 

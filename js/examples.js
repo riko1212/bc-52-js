@@ -66,41 +66,65 @@
 ? removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних.
 */
 
-class Storage {
-  constructor(items) {
-    this.items = items;
-  }
-  getItems() {
-    return this.items;
-  }
+// class Storage {
+//   constructor(items) {
+//     this.items = items;
+//   }
+//   getItems() {
+//     return this.items;
+//   }
 
-  addItem(item) {
-    this.items.push(item);
-  }
+//   addItem(item) {
+//     this.items.push(item);
+//   }
 
-  removeItem(item) {
-    if (this.items.includes(item)) {
-      const indexOfItem = this.items.indexOf(item);
-      this.items.splice(indexOfItem, 1);
-    }
-  }
-}
+//   removeItem(item) {
+//     if (this.items.includes(item)) {
+//       const indexOfItem = this.items.indexOf(item);
+//       this.items.splice(indexOfItem, 1);
+//     }
+//   }
+// }
 
-const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
+// const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
 
-console.log(storage);
+// console.log(storage);
 
-console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑' ]
+// console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑' ]
 
-storage.addItem('🍌');
-console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+// storage.addItem('🍌');
+// console.log(storage.getItems()); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
 
-storage.removeItem('🍋');
-console.log(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
+// storage.removeItem('🍋');
+// console.log(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
 /*
 ? Напиши клас User який створює об'єкт із властивостями login та email.
 ? Оголоси приватні властивості #login та #email, доступ до яких зроби через геттер та сеттер login та email.
 */
+
+// class User {
+//   #login;
+//   #email;
+//   constructor({ login, email } = {}) {
+//     this.#login = login;
+//     this.#email = email;
+//   }
+//   get login() {
+//     return this.#login;
+//   }
+
+//   set login(newLogin) {
+//     this.#login = newLogin;
+//   }
+
+//   get email() {
+//     return this.#email;
+//   }
+
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
 
 // const mango = new User({
 //   login: 'Mango',
@@ -137,10 +161,43 @@ console.log(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
 ? Додай методи addNote(note), removeNote(text) та updatePriority(text, newPriority).
 */
 
+// class Notes {
+//   static Priority = {
+//     LOW: 'low',
+//     NORMAL: 'normal',
+//     HIGH: 'high',
+//   };
+
+//   constructor(note) {
+//     this.note = note;
+//   }
+
+//   getNote() {
+//     return this.note;
+//   }
+
+//   addNote(newNote) {
+//     this.note.push(newNote);
+//   }
+
+//   removeNote(text) {
+//     const idxOfNode = this.note.findIndex((el) => el.text === text);
+
+//     this.note.splice(idxOfNode, 1);
+//   }
+
+//   updatePriority(text, newPriority) {
+//     const findedNote = this.note.find((el) => el.text === text);
+//     findedNote.priority = newPriority;
+//   }
+// }
+
 // const myNotes = new Notes([]);
 
+// console.log(myNotes.getNote());
+
 // myNotes.addNote({ text: 'Моя перша нотатка', priority: Notes.Priority.LOW });
-// console.log(myNotes);
+// console.log(myNotes.getNote());
 
 // myNotes.addNote({
 //   text: 'Моя друга нотатка',
@@ -149,7 +206,7 @@ console.log(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
 // console.log(myNotes);
 
 // myNotes.removeNote('Моя перша нотатка');
-// console.log(myNotes);
+// console.log(myNotes.getNote());
 
 // myNotes.updatePriority('Моя друга нотатка', Notes.Priority.HIGH);
 // console.log(myNotes);
@@ -159,6 +216,16 @@ console.log(storage.getItems()); // [ '🍎', '🍇', '🍑', '🍌' ]
 ? та оголошує одну властивість on - стан вкл/викл (true/false).
 ? За замовчуванням значення властивості on має бути false.
 */
+
+// class Toggle {
+//   constructor({ isOpen = false } = {}) {
+//     this.on = isOpen;
+//   }
+
+//   toggle() {
+//     this.on = !this.on;
+//   }
+// }
 
 // const firstToggle = new Toggle({ isOpen: true });
 
