@@ -31,10 +31,10 @@ const pictures = [
   },
 ];
 
-const titleEl = document.querySelector('.js-title');
+// const titleEl = document.querySelector('.js-title');
 
-// titleEl.textContent = '<span class="title_current_color">Main</span> Title';
-// titleEl.innerHTML = '<span class="title_current_color">Main</span> Title';
+// titleEl.textContent = '<span class="title_current_color">Main</span>';
+// titleEl.innerHTML = '<span class="title_current_color">Main</span>';
 
 /*
 <li class="gallery-item">
@@ -47,9 +47,25 @@ const titleEl = document.querySelector('.js-title');
 const galleryListEl = document.querySelector('.js-gallery');
 
 // Функція для створення карточки makeGalleryCard(cardInfo)
-const makeGalleryCard = ({ width, height, url, alt } = {}) => {};
+const makeGalleryCard = ({ width, height, url, alt } = {}) => {
+  return `
+  <li class="gallery-item">
+    <a href="#">
+      <img src="${url}" alt="${alt}" width="${width}" height="${height}">
+    </a>
+  </li>
+  `;
+};
+
+// console.log(makeGalleryCard(pictures[1]));
+
+const galleryCards = pictures.map((el) => makeGalleryCard(el));
+
+console.log(galleryCards.join(''));
 
 // Створення масиву рядків із елементами
 
 // Вставка елементів на сторінку
-// galleryListEl.innerHTML = galleryCardsArr.join('');
+// galleryListEl.innerHTML = galleryCards.join('');
+
+galleryListEl.insertAdjacentHTML('beforeend', galleryCards.join(''));

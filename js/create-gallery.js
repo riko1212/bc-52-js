@@ -41,12 +41,38 @@ const pictures = [
 
 // Функція для створення карточки makeGalleryCard(cardInfo)
 
-// Створення li
+const galleryEl = document.querySelector('.js-gallery');
 
-// Створення a
+const makeGalleryCard = ({ width, height, url, alt } = {}) => {
+  // Створення li
+  const galleryItemEl = document.createElement('li');
+  galleryItemEl.classList.add('gallery-item');
 
-// Створення img
+  // Створення a
+  const galleryLinkEl = document.createElement('a');
+  galleryLinkEl.href = '#';
+  galleryItemEl.append(galleryLinkEl);
+
+  // Створення img
+
+  const galleryImgEl = document.createElement('img');
+  galleryImgEl.src = url;
+  galleryImgEl.alt = alt;
+  galleryImgEl.width = width;
+  galleryImgEl.height = height;
+  galleryLinkEl.append(galleryImgEl);
+
+  return galleryItemEl;
+};
+
+// console.log(makeGalleryCard(pictures[2]));
 
 // Перебір масиву pictures через map
 
+const galleryCards = pictures.map((el) => makeGalleryCard(el));
+
+console.log(galleryCards);
+
 // Вставка колекції карток на сторінку
+
+galleryEl.append(...galleryCards);
