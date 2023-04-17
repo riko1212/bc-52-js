@@ -1,9 +1,4 @@
-- Об'єкти window і document
-- Ієрархія DOM-елементів
-- Пошук DOM-елементів з querySelector
-- Властивість textContent
-- Робота з classList та атрибутами
-- Створення елементів
-- Вставка елементів через: append, prepend, before та after
-- Видалення методом remove
-- Властивість innerHTML і метод insertAdjacentHTML
+- Основи подій. Створення та видалення слухачів
+- Об'єкт події
+- Скасування поведінки браузера за замовчуванням
+- Події click, change, input, submit, focus, blur і keydown
