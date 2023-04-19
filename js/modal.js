@@ -13,17 +13,16 @@ const toggleModal = () => {
   backdropEl.classList.toggle('is-open');
 };
 
-// const onEscBtnClick = (e) => {
-//   if (e.code === 'Escape' && backdropEl.classList.contains('is-open')) {
-//     console.log(e.code);
-//     toggleModal();
-//     // document.removeEventListener('keydown', onEscBtnClick);
-//   }
-// };
+const onEscBtnClick = (e) => {
+  if (e.code === 'Escape' && backdropEl.classList.contains('is-open')) {
+    console.log(e.code);
+    toggleModal();
+    // document.removeEventListener('keydown', onEscBtnClick);
+  }
+};
 
 const onModalOpenBtnClick = (e) => {
   toggleModal();
-  console.log(e.code);
   document.addEventListener('keydown', toggleModal, {
     once: true,
   });
