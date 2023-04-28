@@ -1,5 +1,10 @@
 {{#each this}}
-<li class="gallery__item">
-    <img src="{{this.urls.regular}}" alt="{{this.alt_description}}" class="gallery-img">
-</li>
+  <li class='gallery__item'>
+    <img
+      src='{{this.pageURL}}'
+      alt='{{this.alt_description}}'
+      class='gallery-img'
+      type='image/jpeg'
+    />
+  </li>
 {{/each}}
