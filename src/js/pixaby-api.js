@@ -1,6 +1,6 @@
 'use strict';
 export class PixabayApi {
-  #BASE_URL = 'https://pixabay.com/api';
+  #BASE_URL = 'https://pixabay.com/api/';
   #API_KEY = '34152906-82ee5ecd7f8cc2c72302ae1f5';
   constructor() {
     this.page = null;
