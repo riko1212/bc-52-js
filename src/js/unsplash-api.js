@@ -24,12 +24,11 @@ export class UnsplashApi {
 
   getRandomPhotos() {
     const searchParams = {
-      query: 'random',
       page: this.page,
-      per_page: this.perPage,
       orientation: 'portrait',
       client_id: this.#API_KEY,
+      count: 12,
     };
-    return axios.get(`${this.#BASE_URL}/search/photos`, { params: searchParams });
+    return axios.get(`${this.#BASE_URL}/photos/random`, { params: searchParams });
   }
 }

@@ -9,8 +9,8 @@ const showRandomPhotos = () => {
     .getRandomPhotos()
     .then(response => {
       const { data } = response;
-
-      galleryListEl.innerHTML = createGalleryCard(data.results);
+      console.log(data);
+      galleryListEl.innerHTML = createGalleryCard(data);
     })
     .catch(err => {
       console.log(err);
