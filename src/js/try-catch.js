@@ -6,18 +6,25 @@
  * Опрацювання помилок в асинхронному коді
  */
 
-// console.log('First');
+console.log('Start');
 
-// setTimeout(() => {
-//   try {
-//     const username = 'Oleksii';
+// try {
+//   console.log('Test');
+//   setTimeout(() => {
+//     const a = 5;
+//     a = 6;
+//   }, 1000);
+// } catch (err) {
+//   console.log(err);
+// }
 
-//     username = 'Elva';
-//   } catch (err) {
-//     console.log(err);
-//   }
+setTimeout(() => {
+  try {
+    const a = 5;
+    a = 6;
+  } catch (err) {
+    console.log(err);
+  }
+}, 1000);
 
-//   console.log('Hello');
-// }, 1000);
-
-// console.log('Second');
+console.log('End');

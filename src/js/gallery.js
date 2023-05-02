@@ -4,74 +4,115 @@ import { UnsplashApi } from './unsplash-api';
 
 const unsplashApi = new UnsplashApi();
 
-const showRandomPhotos = () => {
-  unsplashApi
-    .getRandomPhotos()
-    .then(response => {
-      const { data } = response;
-      console.log(data);
-      galleryListEl.innerHTML = createGalleryCard(data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+const showRandomPhotos = async () => {
+  // Варіант через then()/catch()
+  // unsplashApi
+  //   .getRandomPhotos()
+  //   .then(response => {
+  //     const { data } = response;
+  //     galleryListEl.innerHTML = createGalleryCard(data);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+  //? Варіант через async/await
+  try {
+    const { data } = await unsplashApi.getRandomPhotos();
+    galleryListEl.innerHTML = createGalleryCard(data);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-showRandomPhotos();
+// showRandomPhotos();
 
 const searchFormEl = document.querySelector('.js-search-form');
 const loadMoreBtnEl = document.querySelector('.js-load-more');
 const galleryListEl = document.querySelector('.js-gallery');
 
-const onSearchFormSubmit = e => {
+const onSearchFormSubmit = async e => {
   e.preventDefault();
+  loadMoreBtnEl.classList.add('is-hidden');
+  loadMoreBtnEl.removeEventListener('click', onMoreBtnClick);
   unsplashApi.page = 1;
   unsplashApi.searchQuery = e.currentTarget.user_search_query.value;
-  unsplashApi
-    .fetchPhotosByQuery()
-    .then(response => {
-      const { data } = response;
-      console.log(data);
-      if (data.total_pages === 0) {
-        galleryListEl.innerHTML = '';
-        loadMoreBtnEl.classList.add('is-hidden');
-        loadMoreBtnEl.removeEventListener('click', onMoreBtnClick);
-        console.log('За вашим запитом нічого не знайдено');
-        return;
-      }
+  if (unsplashApi.searchQuery === '') {
+    showRandomPhotos();
+  }
 
-      if (data.total_pages === 1) {
-        loadMoreBtnEl.classList.add('is-hidden');
-        loadMoreBtnEl.removeEventListener('click', onMoreBtnClick);
-        galleryListEl.innerHTML = createGalleryCard(data.results);
-        return;
-      }
+  // Варіант через then()/catch()
+  // unsplashApi
+  //   .fetchPhotosByQuery()
+  //   .then(response => {
+  //     const { data } = response;
+  //     if (data.total_pages === 0) {
+  //       galleryListEl.innerHTML = '';
+  //
+  //       console.log('За вашим запитом нічого не знайдено');
+  //       return;
+  //     }
+
+  //     if (data.total_pages === 1) {
+  //       galleryListEl.innerHTML = createGalleryCard(data.results);
+  //       return;
+  //     }
+  //     galleryListEl.innerHTML = createGalleryCard(data.results);
+  //     loadMoreBtnEl.classList.remove('is-hidden');
+  //     loadMoreBtnEl.addEventListener('click', onMoreBtnClick);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+
+  //? Варіант через async/await
+  try {
+    const { data } = await unsplashApi.fetchPhotosByQuery();
+    if (data.total_pages === 0) {
+      galleryListEl.innerHTML = '';
+      console.log('За вашим запитом нічого не знайдено');
+      return;
+    }
+    if (data.total_pages === 1) {
       galleryListEl.innerHTML = createGalleryCard(data.results);
-      loadMoreBtnEl.classList.remove('is-hidden');
-      loadMoreBtnEl.addEventListener('click', onMoreBtnClick);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      return;
+    }
+    galleryListEl.innerHTML = createGalleryCard(data.results);
+    loadMoreBtnEl.classList.remove('is-hidden');
+    loadMoreBtnEl.addEventListener('click', onMoreBtnClick);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-const onMoreBtnClick = () => {
+const onMoreBtnClick = async () => {
   unsplashApi.page += 1;
+  // Варіант через then()/catch()
+  // unsplashApi
+  //   .fetchPhotosByQuery()
+  //   .then(response => {
+  //     const { data } = response;
+  //     console.log(data.results);
+  //     galleryListEl.insertAdjacentHTML('beforeend', createGalleryCard(data.results));
+  //     if (unsplashApi.page === data.total_pages) {
+  //       loadMoreBtnEl.classList.add('is-hidden');
+  //       loadMoreBtnEl.removeEventListener('click', onMoreBtnClick);
+  //     }
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+  //? Варіант через async/await
+  try {
+    const { data } = await unsplashApi.fetchPhotosByQuery();
 
-  unsplashApi
-    .fetchPhotosByQuery()
-    .then(response => {
-      const { data } = response;
-      console.log(data.results);
-      galleryListEl.insertAdjacentHTML('beforeend', createGalleryCard(data.results));
-      if (unsplashApi.page === data.total_pages) {
-        loadMoreBtnEl.classList.add('is-hidden');
-        loadMoreBtnEl.removeEventListener('click', onMoreBtnClick);
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    galleryListEl.insertAdjacentHTML('beforeend', createGalleryCard(data.results));
+    if (unsplashApi.page === data.total_pages) {
+      loadMoreBtnEl.classList.add('is-hidden');
+      loadMoreBtnEl.removeEventListener('click', onMoreBtnClick);
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
